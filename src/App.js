@@ -9,7 +9,7 @@ import ProductPAge from "./pages/product/ProductPage";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App ">
       <BrowserRouter>
         <Navbar />
         <Routes>

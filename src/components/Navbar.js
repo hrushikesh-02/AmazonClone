@@ -16,7 +16,7 @@ const Navbar = () => {
   ]);
 
   return (
-    <div className="h-[60px] flex items-center justify-between bg-amazonclone text-white">
+    <div className="min-w-[1000px] h-[60px] flex items-center justify-between bg-amazonclone text-white">
       {/* LEFT */}
       <div className="flex items-center m-4 ">
         <Link to={"/"} className="hover:border rounded">
@@ -35,15 +35,15 @@ const Navbar = () => {
         </div>
       </div>
       {/* CENTER */}
-      <div className="p-1 flex grow relative items-center">
+      <div className="p-1 flex grow items-center">
         <Search />
       </div>
       {/* RIGHT */}
       <div className="p-1 flex">
         <div className="flex items-center rounded bg-amazonclone">
-          <select className="text-xs text-black xl:text-sm rounded h-[100%] ml-4 ">
+          <select className="text-xs text-black xl:text-sm rounded h-[80%] ml-4 ">
             {langOpts.map((lang) => {
-              return <option className="p-3">{lang}</option>;
+              return <option key={lang}>{lang}</option>;
             })}
           </select>
         </div>
