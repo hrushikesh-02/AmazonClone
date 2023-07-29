@@ -5,7 +5,7 @@ import axios from "axios";
 
 const ProductPage = () => {
   const { id } = useParams();
-  const [ratingValue, setRatingValue] = useState(2);
+  const [ratingValue, setRatingValue] = useState(1);
   const [product, setProduct] = useState({});
 
   useEffect(() => {
@@ -20,8 +20,8 @@ const ProductPage = () => {
       }
     };
     fetchData();
-  }, []);
-  console.log(product, ratingValue);
+  }, [ratingValue]);
+
   return (
     <div className="flex">
       {/* Image section for product */}
@@ -32,7 +32,14 @@ const ProductPage = () => {
       <div className="bg-blue-100 w-[50%] p-2 flex flex-col pl-3">
         <div className="mt-10 text-xl font-bold">{product.title}</div>
         <div className="">
-          <Rating name="read-only" value={ratingValue} readOnly />
+          <Rating
+            size="small"
+            defaultValue={2.5}
+            value={ratingValue ?? 1}
+            readOnly
+            className="mt-2"
+          />
+          {product.avgRating}
         </div>
         <div className="mt-5">{product.description}</div>
       </div>
