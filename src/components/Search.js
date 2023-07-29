@@ -47,10 +47,10 @@ const Search = () => {
     };
     fetchData();
   }, []);
-  console.log(data);
+  // console.log(data);
 
   return (
-    <div className="w-[100%] bg-white text-black flex rounded-[5px] h-12">
+    <div className="w-[100%] bg-white text-black flex rounded-[5px] h-11">
       <div className="flex items-center rounded">
         <select className="bg-gray-300 text-black border text-xs xl:text-sm h-[100%] rounded-[5px_0px_0px_5px]">
           {catOpts.map((category) => {
@@ -70,10 +70,11 @@ const Search = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
         /> */}
         <Autocomplete
+          disablePortal
           type="text"
           id="combo-box-demo"
           options={data}
-          sx={{ border: "none", flexGrow: 1 }}
+          sx={{ border: "none", flexGrow: 1, outline: "none" }}
           renderInput={(params) => <TextField {...params} />}
         />
       </div>
