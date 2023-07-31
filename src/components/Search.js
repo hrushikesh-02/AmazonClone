@@ -3,8 +3,11 @@ import axios from "axios";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import Autocomplete from "@mui/material/Autocomplete";
 import { TextField } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const Search = () => {
+  const navigate = useNavigate();
+
   const [catOpts, setCatOpts] = useState([
     "All",
     "Deals",
@@ -15,7 +18,7 @@ const Search = () => {
     "Mobiles",
   ]);
 
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState({});
   const [data, setData] = useState([
     { label: "The Shawshank Redemption", year: 1994 },
     { label: "The Godfather", year: 1972 },
@@ -33,13 +36,21 @@ const Search = () => {
     },
   };
 
+  const onSearchClick = (e) => {
+    e.preventDefault();
+    window.location.href = `/product/${searchTerm.id}`;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get("/data/Product.json", config);
         const jsonData = Object.values(response.data);
         // const objectsArray = jsonData.map((item) => ({ title: item.title }));
-        const objectsArray = jsonData.map((item) => item.title);
+        // const objectsArray = jsonData.map((item) => item.title);
+        const objectsArray = jsonData.map((item) => {
+          return { id: item.id, price: item.price, label: item.title };
+        });
         setData(objectsArray);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -48,6 +59,11 @@ const Search = () => {
     fetchData();
   }, []);
   // console.log(data);
+
+  const handleAutocompleteChange = (event, value) => {
+    console.log(value);
+    setSearchTerm(value);
+  };
 
   return (
     <div className="w-[100%] bg-white text-black flex rounded-[5px] h-11">
@@ -63,22 +79,21 @@ const Search = () => {
         </select>
       </div>
       <div className="flex grow items-center justify-between">
-        {/* <input
-          className="flex grow items-center h-[100%] rounded-l text-black pl-2"
-          type="text"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        /> */}
         <Autocomplete
           disablePortal
           type="text"
+          freeSolo
           id="combo-box-demo"
           options={data}
           sx={{ border: "none", flexGrow: 1, outline: "none" }}
           renderInput={(params) => <TextField {...params} />}
+          onChange={handleAutocompleteChange}
         />
       </div>
-      <div className="bg-amazonclone-yellow flex items-center justify-center p-2  rounded-[0_5px_5px_0]">
+      <div
+        className="bg-amazonclone-yellow h-[100%] flex items-center justify-center p-2  rounded-[0_5px_5px_0]"
+        onClick={onSearchClick}
+      >
         <MagnifyingGlassIcon className="w-6 h-6 " />
       </div>
     </div>
