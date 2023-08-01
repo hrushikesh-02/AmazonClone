@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Rating from "@mui/material/Rating";
 import axios from "axios";
 import OffersCard from "../../components/OffersCard";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../redux/cartSlice";
 
 const ProductPage = () => {
+  const dispatch = useDispatch();
+  const [quantity, setQuantity] = useState("1");
   const { id } = useParams();
-  const [ratingValue, setRatingValue] = useState(1);
+  const [ratingValue, setRatingValue] = useState("1");
   const [product, setProduct] = useState({});
   let dateObj = new Date();
   let day = String(dateObj.getDate()).padStart(2, "0");
-  const [offersList, setOffersList] = useState([
+  const offersList = [
     {
       title: "No Cost EMI",
       description:
@@ -28,7 +32,12 @@ const ProductPage = () => {
       title: "Bank Offers",
       description: "Upto ₹1,750.00 discount on select Credit Cards, HDF",
     },
-  ]);
+  ];
+
+  const addQuantityToProduct = () => {
+    setProduct((product.quantity = quantity));
+    return product;
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -72,7 +81,9 @@ const ProductPage = () => {
         <div className="mt-5">
           <div className="">
             <span className="text-red-500  text-2xl mr-5">{discount}%</span>
-            <span className=" text-2xl ">₹{product.price * 82}</span>
+            <span className=" text-2xl ">
+              ₹{(product.price * 82).toFixed(2)}
+            </span>
           </div>
           <div className="text-xs mt-2">
             M.R.P <span className="line-through ">{product.oldPrice * 82}</span>
@@ -111,7 +122,9 @@ const ProductPage = () => {
       {/* Price section for product */}
       <div className=" w-[15%]  rounded flex flex-col items-center">
         <div className=" w-[90%] p-3 border-2 mt-12 rounded flex flex-col">
-          <div className="w-[100%] text-2xl">₹{product.price * 82}</div>
+          <div className="w-[100%] text-2xl">
+            ₹{(product.price * 82).toFixed(2)}
+          </div>
           <div>
             <span className="text-amazonclone-link">Free delivery </span>
             <span>
@@ -128,12 +141,27 @@ const ProductPage = () => {
             </p>
           </div>
           <div className="flex flex-col mt-2">
-            <button className="rounded-full border-1 bg-amazonclone-yellow p-2">
-              Add to Cart
-            </button>
-            <button className="rounded-full border-1 bg-[#fa8900] p-2 mt-2">
+            <select
+              onChange={(e) => setQuantity(e.target.value)}
+              className="p-1 w-[50%] mt-3"
+            >
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+            <Link to="/checkout">
+              <button
+                onClick={() => dispatch(addToCart(addQuantityToProduct()))}
+                className="mt-6 rounded-full border-1 bg-amazonclone-yellow p-2"
+              >
+                Add to Cart
+              </button>
+            </Link>
+            {/* <button className="rounded-full border-1 bg-[#fa8900] p-2 mt-2">
               Buy Now
-            </button>
+            </button> */}
           </div>
           <div className="mt-3 ml-1 text-amazonclone-link">
             Secure Transcation

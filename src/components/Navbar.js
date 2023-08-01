@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { MapPinIcon, ShoppingCartIcon } from "@heroicons/react/24/solid";
 import Search from "./Search";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
-  const [langOpts, setLangOpts] = useState([
+  const langOpts = [
     "English",
     "Hindi",
     "Tamil",
@@ -13,7 +14,9 @@ const Navbar = () => {
     "Konkani",
     "Kannada",
     "French",
-  ]);
+  ];
+
+  const cart = useSelector((state) => state.cart.productsNumber);
 
   return (
     <div className="min-w-[1000px] h-[60px] flex items-center justify-between bg-amazonclone text-white">
@@ -60,7 +63,7 @@ const Navbar = () => {
             <ShoppingCartIcon className="h-[48px]" />
             <div className="relative">
               <div className="absolute right-[9px] font-bold m-2 text-orange-400">
-                2
+                {cart}
               </div>
             </div>
             <div className="mt-7 text-xs xl:text-sm font-bold ">Cart</div>

@@ -6,9 +6,7 @@ import { TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const Search = () => {
-  const navigate = useNavigate();
-
-  const [catOpts, setCatOpts] = useState([
+  const catOpts = [
     "All",
     "Deals",
     "Amazon",
@@ -16,7 +14,7 @@ const Search = () => {
     "Computers",
     "Home",
     "Mobiles",
-  ]);
+  ];
 
   const [searchTerm, setSearchTerm] = useState({});
   const [data, setData] = useState([
@@ -36,9 +34,12 @@ const Search = () => {
     },
   };
 
+  const navigate = useNavigate();
   const onSearchClick = (e) => {
-    e.preventDefault();
-    window.location.href = `/product/${searchTerm.id}`;
+    // e.preventDefault();
+    // window.location.href = `/product/${searchTerm.id}`;
+    const path = navigate(`/product/${searchTerm.id}`);
+    navigate(0);
   };
 
   useEffect(() => {
@@ -58,7 +59,6 @@ const Search = () => {
     };
     fetchData();
   }, []);
-  // console.log(data);
 
   const handleAutocompleteChange = (event, value) => {
     console.log(value);

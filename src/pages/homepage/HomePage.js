@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import HomePageCard from "../../components/HomePageCard";
 import Carousel from "../../components/Carousel";
 
 const HomePage = () => {
-  const [homePageCardArray, setHomePageCardArray] = useState([
+  const homePageCardArray = [
     {
       title: "We have a surprise for you",
       img: "../images/home_grid_1.jpg",
@@ -40,7 +40,7 @@ const HomePage = () => {
       img: "../images/home_grid_8.jpg",
       link: "Learn more",
     },
-  ]);
+  ];
 
   return (
     <div className="bg-amazonclone-background ">
