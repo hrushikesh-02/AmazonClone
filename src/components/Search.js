@@ -36,10 +36,10 @@ const Search = () => {
 
   const navigate = useNavigate();
   const onSearchClick = (e) => {
-    // e.preventDefault();
-    // window.location.href = `/product/${searchTerm.id}`;
-    const path = navigate(`/product/${searchTerm.id}`);
-    navigate(0);
+    e.preventDefault();
+    window.location.href = `/product/${searchTerm.id}`;
+    // const path = navigate(`/product/${searchTerm.id}`);
+    // navigate(0); //fix bug data wipe out
   };
 
   useEffect(() => {
@@ -61,7 +61,7 @@ const Search = () => {
   }, []);
 
   const handleAutocompleteChange = (event, value) => {
-    console.log(value);
+    // console.log(value);
     setSearchTerm(value);
   };
 

@@ -50,16 +50,16 @@ const Navbar = () => {
             })}
           </select>
         </div>
-        <div className="pr-4 pl-4 ml-3 hover:border rounded">
+        <div className="pr-4 pl-4 ml-3 hover:border rounded flex flex-col items-center justify-center">
           <div className="text-xs xl:text-sm">Hello, sign in</div>
           <div className="text-sm xl:text-base font-bold">Accounts & Lists</div>
         </div>
-        <div className="pr-4 pl-4 hover:border rounded">
+        <div className="pr-4 pl-4 hover:border rounded flex flex-col items-center justify-center">
           <div className="text-xs xl:text-sm">Returns</div>
           <div className="text-sm xl:text-base font-bold">& Orders</div>
         </div>
         <Link to={"/checkout"}>
-          <div className="flex pr-3 pl-3 hover:border rounded">
+          <div className="flex pr-3 pl-3 hover:border rounded ">
             <ShoppingCartIcon className="h-[48px]" />
             <div className="relative">
               <div className="absolute right-[9px] font-bold m-2 text-orange-400">
