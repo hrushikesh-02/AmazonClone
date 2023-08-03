@@ -1,6 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { removeFromCart } from "../redux/cartSlice";
+import {
+  decrementQuantity,
+  incrementQuantity,
+  removeFromCart,
+} from "../redux/cartSlice";
 
 const CheckoutPageProduct = (props) => {
   const dispatch = useDispatch();
@@ -26,13 +30,23 @@ const CheckoutPageProduct = (props) => {
         </div>
         <div className="flex gap-3 text-sm mt-5 items-center">
           <div className="bg-stone-300 flex shadow-md  rounded-sm h-full">
-            <button className="p-2 flex item-center justify-center border-r border-stone-400">
+            <button
+              onClick={() => {
+                dispatch(decrementQuantity(props.product.id));
+              }}
+              className="p-2 flex item-center justify-center border-r border-stone-400"
+            >
               -
             </button>
             <div className="p-2 flex item-center justify-center">
               {props.product.quantity}
             </div>
-            <button className="p-2 flex item-center justify-center border-l border-stone-400">
+            <button
+              onClick={() => {
+                dispatch(incrementQuantity(props.product.id));
+              }}
+              className="p-2 flex item-center justify-center border-l border-stone-400"
+            >
               +
             </button>
           </div>
