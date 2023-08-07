@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import Rating from "@mui/material/Rating";
 import axios from "axios";
 import OffersCard from "../../components/OffersCard";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/cartSlice";
 
 const ProductPage = () => {
