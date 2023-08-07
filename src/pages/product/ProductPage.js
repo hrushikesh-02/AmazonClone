@@ -45,13 +45,14 @@ const ProductPage = () => {
         const response = await axios.get("/data/Product.json");
         const jsonData = Object.values(response.data);
         setProduct(jsonData[id]);
+        // console.log(jsonData[id]);
         setRatingValue(product.avgRating);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     fetchData();
-  }, [ratingValue]);
+  }, [ratingValue, id]);
 
   const discount = (
     ((product.oldPrice - product.price) / product.oldPrice) *
@@ -86,7 +87,10 @@ const ProductPage = () => {
             </span>
           </div>
           <div className="text-xs mt-2">
-            M.R.P <span className="line-through ">{product.oldPrice * 82}</span>
+            M.R.P{" "}
+            <span className="line-through ">
+              {(product.oldPrice * 82).toFixed(2)}
+            </span>
           </div>
           <div className="text-sm mt-5">
             <p>Inclusive of all taxes</p>

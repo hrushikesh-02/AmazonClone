@@ -6,10 +6,15 @@ const CheckoutPage = () => {
   const purchasedProducts = useSelector((state) => state.cart.products);
   const productsCount = useSelector((state) => state.cart.productsNumber);
   let sum = 0;
-  const SubTotal = purchasedProducts.map(
-    (product) => (sum += product.price * product.quantity)
-  );
-  // console.log(purchasedProducts);
+  // const SubTotal = purchasedProducts.map(
+  //   (product) => (sum += parseInt(product.price) * parseInt(product.quantity))
+  // );
+
+  const SubTotal = purchasedProducts.reduce((total, curr) => {
+    return total + parseInt(curr.price) * parseInt(curr.quantity);
+  }, 0);
+
+  console.log(purchasedProducts);
   return (
     <div className="bg-amazonclone-background  p-3 flex justify-evenly">
       <div className="bg-white w-[70%] rounded p-2 mt-10">

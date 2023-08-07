@@ -3,7 +3,7 @@ import axios from "axios";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import Autocomplete from "@mui/material/Autocomplete";
 import { TextField } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Search = () => {
   const catOpts = [
@@ -35,12 +35,6 @@ const Search = () => {
   };
 
   const navigate = useNavigate();
-  const onSearchClick = (e) => {
-    e.preventDefault();
-    window.location.href = `/product/${searchTerm.id}`;
-    // const path = navigate(`/product/${searchTerm.id}`);
-    // navigate(0); //fix bug data wipe out
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -90,12 +84,17 @@ const Search = () => {
           onChange={handleAutocompleteChange}
         />
       </div>
-      <div
-        className="bg-amazonclone-yellow h-[100%] flex items-center justify-center p-2  rounded-[0_5px_5px_0]"
-        onClick={onSearchClick}
-      >
-        <MagnifyingGlassIcon className="w-6 h-6 " />
-      </div>
+      <Link to={`/product/${searchTerm.id}`} activeClassName="current">
+        <div
+          className="bg-amazonclone-yellow h-[100%] flex items-center justify-center p-2  rounded-[0_5px_5px_0]"
+          // onClick={(e) => {
+          //   e.preventDefault();
+          //   navigate(`/product/${searchTerm.id}`);
+          // }}
+        >
+          <MagnifyingGlassIcon className="w-6 h-6 " />
+        </div>
+      </Link>
     </div>
   );
 };

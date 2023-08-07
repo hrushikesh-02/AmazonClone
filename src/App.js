@@ -10,17 +10,17 @@ import ProductPage from "./pages/product/ProductPage";
 function App() {
   return (
     <div className="App ">
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route exact path="/" element={<HomePage />} />
-          <Route path="/product/:id" element={<ProductPage />} />
-          <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="/search" element={<SearchPage />} />
-          <Route path="/*" element={<HomePage />} />
-          <Route path="/product/*" element={<HomePage />} />
-        </Routes>
-      </BrowserRouter>
+      {/* <BrowserRouter> */}
+      <Navbar />
+      <Routes>
+        <Route exact path="/" element={<HomePage />} />
+        <Route path="/product/:id" element={<ProductPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="/*" element={<HomePage />} />
+        <Route path="/product/*" element={<HomePage />} />
+      </Routes>
+      {/* </BrowserRouter> */}
     </div>
   );
 }
