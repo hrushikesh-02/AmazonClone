@@ -3,41 +3,46 @@ import HomePageCard from "../../components/HomePageCard";
 import Carousel from "../../components/Carousel";
 
 const HomePage = () => {
+  console.log(process.env);
   const homePageCardArray = [
     {
       title: "We have a surprise for you",
-      img: "../images/home_grid_1.jpg",
+      img: process.env.REACT_APP_BASE_URL + "images/home_grid_1.jpg",
       link: "See terms and conditions",
     },
     {
       title: "Watch The Rings of Power",
-      img: "../images/home_grid_2.jpg",
+      img: process.env.REACT_APP_BASE_URL + "images/home_grid_2.jpg",
       link: "Start streaming now",
     },
     {
       title: "Unlimited Streaming",
-      img: "../images/home_grid_3.jpg",
+      img: process.env.REACT_APP_BASE_URL + "images/home_grid_3.jpg",
       link: "Find out more",
     },
     {
       title: "More titles to explore",
-      img: "../images/home_grid_4.jpg",
+      img: process.env.REACT_APP_BASE_URL + "images/home_grid_4.jpg",
       link: "Browse Kindle Unlimited",
     },
     {
       title: "Shop Pet Supplies",
-      img: "../images/home_grid_5.jpg",
+      img: process.env.REACT_APP_BASE_URL + "images/home_grid_5.jpg",
       link: "See more",
     },
     {
       title: "Spring Sale",
-      img: "../images/home_grid_6.jpg",
+      img: process.env.REACT_APP_BASE_URL + "images/home_grid_6.jpg",
       link: "See the deals",
     },
-    { title: "Echo Buds", img: "../images/home_grid_7.jpg", link: "See more" },
+    {
+      title: "Echo Buds",
+      img: process.env.REACT_APP_BASE_URL + "images/home_grid_7.jpg",
+      link: "See more",
+    },
     {
       title: "Family Plan: 3 months free",
-      img: "../images/home_grid_8.jpg",
+      img: process.env.REACT_APP_BASE_URL + "images/home_grid_8.jpg",
       link: "Learn more",
     },
   ];

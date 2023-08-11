@@ -42,7 +42,9 @@ const ProductPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/data/Product.json");
+        const response = await axios.get(
+          process.env.REACT_APP_BASE_URL + "data/Product.json"
+        );
         const jsonData = Object.values(response.data);
         setProduct(jsonData[id]);
         // console.log(jsonData[id]);

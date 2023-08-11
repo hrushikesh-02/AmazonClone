@@ -39,7 +39,10 @@ const Search = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/data/Product.json", config);
+        const response = await axios.get(
+          process.env.REACT_APP_BASE_URL + "data/Product.json",
+          config
+        );
         const jsonData = Object.values(response.data);
         // const objectsArray = jsonData.map((item) => ({ title: item.title }));
         // const objectsArray = jsonData.map((item) => item.title);
