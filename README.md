@@ -1,3 +1,7 @@
+# Live site link
+
+https://hrushikesh-02.github.io/AmazonClone/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

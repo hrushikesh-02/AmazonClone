@@ -3,7 +3,6 @@ import HomePageCard from "../../components/HomePageCard";
 import Carousel from "../../components/Carousel";
 
 const HomePage = () => {
-  console.log(process.env);
   const homePageCardArray = [
     {
       title: "We have a surprise for you",
@@ -65,7 +64,7 @@ const HomePage = () => {
           <div className="m-3 pt-8">
             <img
               className="xl:hidden"
-              src={"../images/banner_image_2.jpg"}
+              src={process.env.REACT_APP_BASE_URL + "images/banner_image_2.jpg"}
               alt="Banner 2"
             />
           </div>

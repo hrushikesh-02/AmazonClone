@@ -9,17 +9,28 @@ import ProductPage from "./pages/product/ProductPage";
 function App() {
   return (
     <div className="App ">
-      {/* <BrowserRouter> */}
-      <Navbar />
-      <Routes>
-        <Route exact path="/" element={<HomePage />} />
-        <Route path="/product/:id" element={<ProductPage />} />
-        <Route path="/checkout" element={<CheckoutPage />} />
-        <Route path="/search" element={<SearchPage />} />
-        <Route path="/*" element={<HomePage />} />
-        <Route path="/product/*" element={<HomePage />} />
-      </Routes>
-      {/* </BrowserRouter> */}
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route
+            exact
+            path={process.env.REACT_APP_BASE_URL + ""}
+            element={<HomePage />}
+          />
+          <Route
+            path={process.env.REACT_APP_BASE_URL + "product/:id"}
+            element={<ProductPage />}
+          />
+          <Route
+            path={process.env.REACT_APP_BASE_URL + "checkout"}
+            element={<CheckoutPage />}
+          />
+          <Route
+            path={process.env.REACT_APP_BASE_URL + "search"}
+            element={<SearchPage />}
+          />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

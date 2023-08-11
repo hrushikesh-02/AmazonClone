@@ -22,10 +22,13 @@ const Navbar = () => {
     <div className="min-w-[1000px] h-[60px] flex items-center justify-between bg-amazonclone text-white">
       {/* LEFT */}
       <div className="flex items-center m-4 ">
-        <Link to={"/"} className="hover:border rounded">
+        <Link
+          to={process.env.REACT_APP_BASE_URL}
+          className="hover:border rounded"
+        >
           <img
             className="h-[35px] w-[100px] m-2"
-            src={"../images/amazon.png"}
+            src={process.env.REACT_APP_BASE_URL + "images/amazon.png"}
             alt="Amazon logo"
           />
         </Link>
@@ -58,7 +61,7 @@ const Navbar = () => {
           <div className="text-xs xl:text-sm">Returns</div>
           <div className="text-sm xl:text-base font-bold">& Orders</div>
         </div>
-        <Link to={"/checkout"}>
+        <Link to={process.env.REACT_APP_BASE_URL + "checkout"}>
           <div className="flex pr-3 pl-3 hover:border rounded ">
             <ShoppingCartIcon className="h-[48px]" />
             <div className="relative">

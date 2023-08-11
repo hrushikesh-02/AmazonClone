@@ -18,21 +18,36 @@ const Carousel = () => {
         className="h-[50%]"
       >
         <SwiperSlide>
-          <img src={"../images/carousel_1.jpg"} alt="Carousel POR" />
+          <img
+            src={process.env.REACT_APP_BASE_URL + "images/carousel_1.jpg"}
+            alt="Carousel POR"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={"../images/carousel_2.jpg"} alt="Carousel POR" />
+          <img
+            src={process.env.REACT_APP_BASE_URL + "images/carousel_2.jpg"}
+            alt="Carousel POR"
+          />
         </SwiperSlide>
         <SwiperSlide className="bg-black">
           <video controls muted="muted">
-            <source src={"../images/carousel_vid.mp4"} type="video/mp4" />
+            <source
+              src={process.env.REACT_APP_BASE_URL + "images/carousel_vid.mp4"}
+              type="video/mp4"
+            />
           </video>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={"../images/carousel_4.jpg"} alt="Carousel POR" />
+          <img
+            src={process.env.REACT_APP_BASE_URL + "images/carousel_4.jpg"}
+            alt="Carousel POR"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={"../images/carousel_5.jpg"} alt="Carousel POR" />
+          <img
+            src={process.env.REACT_APP_BASE_URL + "images/carousel_5.jpg"}
+            alt="Carousel POR"
+          />
         </SwiperSlide>
       </Swiper>
       <div className="h-[50%] bg-gradient-to-b from-stone-900 to-amazonclone-background" />

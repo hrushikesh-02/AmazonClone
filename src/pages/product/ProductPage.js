@@ -65,7 +65,11 @@ const ProductPage = () => {
     <div className="flex">
       {/* Image section for product */}
       <div className=" p-2 h-[600px] w-[35%] flex items-center justify-center">
-        <img src={product.image} className="h-[400px] " alt="" />
+        <img
+          src={process.env.REACT_APP_BASE_URL + product.image}
+          className="h-[400px] "
+          alt=""
+        />
       </div>
       {/* IDescription section for product */}
       <div className=" w-[50%] p-2 flex flex-col">
@@ -157,7 +161,7 @@ const ProductPage = () => {
               <option>4</option>
               <option>5</option>
             </select>
-            <Link to="/checkout">
+            <Link to={process.env.REACT_APP_BASE_URL + "checkout"}>
               <button
                 onClick={() => dispatch(addToCart(addQuantityToProduct()))}
                 className="mt-6 rounded-full border-1 bg-amazonclone-yellow p-2"
